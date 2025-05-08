@@ -1,0 +1,10 @@
+https://finance.yahoo.com/quote/AAPL/news/
+no pagination (only ~200 articles per page)
+articles mixed from multiple sources,
+partially with paywall
+
+
+https://www.zacks.com/stock/research/AAPL/all-news?page=1
+pagination (found news back to 2015)
+only articles and commentary from Zacks Research, but no paywall and easy to scrape (full text behind only a read more button)
+
