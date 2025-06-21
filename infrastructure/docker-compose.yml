@@ -1,4 +1,39 @@
 services:
+
+  influxdb:
+    image: influxdb
+    container_name: influxdb
+    restart: unless-stopped
+    ports:
+      - "8086:8086"
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=bdinf
+      - DOCKER_INFLUXDB_INIT_PASSWORD=bdinfisawesome
+      - DOCKER_INFLUXDB_INIT_ORG=bdinf-org
+      - DOCKER_INFLUXDB_INIT_BUCKET=bdinf-bucket
+      - DOCKER_INFLUXDB_INIT_RETENTION=0
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=14iJvsBJKp37nLXjIZvE4RbAoEO2dNs1k0GvCbKuJUnF_ub4pSWWw80O739jabLPMD-XBzA72WSX9f-4FuDBQ==
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+    networks:
+      - dbnet
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=bdinf
+      - MONGO_INITDB_ROOT_PASSWORD=bdinfisawesome
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - dbnet
+
+
   spark-master:
     build: .
     image: custom-spark:latest
@@ -56,3 +91,12 @@ services:
       - SPARK_WORKER_CORES=4
     ports:
       - "8085:8081"
+
+
+volumes:
+  influxdb_data:
+  mongo_data:
+
+networks:
+  dbnet:
+    driver: bridge
