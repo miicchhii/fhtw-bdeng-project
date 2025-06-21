@@ -1,0 +1,11 @@
+beautifulsoup4~=4.13.4
+selenium~=4.32.0
+matplotlib~=3.10.1
+psutil~=7.0.0
+boto3~=1.38.35
+confluent-kafka~=2.10.0
+nltk~=3.9.1
+pandas~=2.2.3
+transformers~=4.38.2
+torch~=2.2.0
+pyspark~=4.0.0
